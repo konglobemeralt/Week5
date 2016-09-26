@@ -40,8 +40,8 @@ public class TicTacToe {
     final Random rand = new Random();
 
     void program() {
-        Player p1 = new Player("olle", 'X');
-        Player p2 = new Player("pelle", 'O');
+        Player p1 = new Player("Olle", 'X');
+        Player p2 = new Player("Pelle", 'O');
         Player winner = null;
 
         TicTacToeBoard board = new TicTacToeBoard();
@@ -51,34 +51,48 @@ public class TicTacToe {
         Player actual = p1;   // Bad, jus for now
 
         while (!board.isFull()) {
-            // -- Input ----------
-            int index = getPlayerSelection(actual);
 
-            // --- Process ----------
-            if (board.isEmpty(index)) {
-                board.getPositions()[index] = actual.getMark();
-                if (board.hasWinner(actual.getMark())) {
-                    winner = actual;
+            boolean correctPlay;
+
+            do {
+                correctPlay = true;
+                // -- Input ----------
+                int index = getPlayerSelection(actual);
+                if(index < 0 || index > 8) {
+                    out.println("Enter a number between 0 and 8");
+                    correctPlay = false;
                     break;
                 }
-            }
-            // -- Output --------
-            plotBoard(board);
 
-            // Book keeping
-            if (actual == p1) {
-                actual = p2;
-            } else {
-                actual = p1;
-            }
+                // --- Process ----------
+                if (board.isEmpty(index)) {
+                    board.getPositions()[index] = actual.getMark();
+                    if (board.hasWinner(actual.getMark())) {
+                        winner = actual;
+                        break;
+                    }
+                    // -- Output --------
+                    plotBoard(board);
+
+                    // Book keeping
+                    if (actual == p1) {
+                        actual = p2;
+                    } else {
+                        actual = p1;
+                    }
+                } else {
+                    out.println("The selected position is not empty");
+                    correctPlay = false;
+                }
+
+            }while(!correctPlay);
+
         }
 
         out.println("Game over!");
         plotBoard(board);
-        if (winner == p2) {
-            out.println("Winner is " + p2.getName());
-        } else if (winner == p1) {
-            out.println("Winner is " + p1.getName());
+        if(winner != null) {
+            out.println("Winner is " + winner.getName());
         } else {
             out.println("Draw");
         }
