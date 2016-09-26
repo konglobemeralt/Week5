@@ -1,0 +1,18 @@
+*** README **
+
+The directories are
+-------------------
+- corpus, text samples (text files) from a few languages used to train the program
+- lang, languages that the program knows of (as serialized Java objects = binary files)
+- test, text samples of "unknown" languages. For the program to classify which languages.
+
+Some tips
+---------
+When copying text from web (wikipedia language editions)
+you possibly will get very long lines. To format to some fixed width, use unix
+command fold. Example;
+
+$ fold french1.txt -s -w 40 > french2.txt
+
+To check letter frequencies for different languages, see.
+https://en.wikipedia.org/wiki/Letter_frequency

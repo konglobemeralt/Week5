@@ -1,0 +1,14 @@
+instansvariabel
+instans
+konstruktor
+attribut
+icke-muterbar
+parameter
+aktuell parameter
+formell parameter
+anrop
+referens
+typ
+referens variabel
+argument
+

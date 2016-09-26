@@ -1,0 +1,113 @@
+**** Laboration 5 ***
+
+Till detta skall ENDAST används det vi gått igenom vecka 1-5
+
+För ev. vidare instruktioner se i respektive fil
+
+
+1.  Utgå från /basics/TicTacToe och strukturera om programmet så att klass-filer
+    används.
+
+2. Gör klart basics/PigLatin. Se,https://en.wikipedia.org/wiki/Pig_Latin
+    Använd metoder från klassen string ... så mycket som möjligt!
+    Använd funktionell nedbrytning!
+    Vilka String-metoder som finns och vad de gör:
+    Se https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
+
+3.  Gör klart spelet Hangman. Allt som behövs finns i /product.
+    Läs kommentarer för vidare info.
+    Exempel på körning:
+
+    Welcome to HangMan, try to guess the word!
+
+    _ _ _
+    Guess a char > r
+
+    ---|                            (miss rita galgen)
+
+
+    _ _ _
+    Guess a char > e
+
+    ---|
+       |                            (miss mer galge)
+
+
+    _ _ _
+    Guess a char > s
+
+    ---|
+       |                            (rätt, ingen galge ...)
+
+
+    s _ _                           (..skriv bokstav på rätt plats)
+    Guess a char > a
+
+    ---|
+       |
+       O                             (miss)
+
+
+    s _ _
+    Guess a char > i
+
+    ---|
+       |
+       O                            (miss)
+      /
+
+    s _ _
+    Guess a char > o
+
+    ---|
+       |                             (hit)
+       O
+      /
+
+    s o _                           (skriv bokstav igen)
+    Guess a char > v
+
+    ---|
+       |
+       O                          (hit, ... )
+      /|
+
+    s o _
+    Guess a char > l
+
+
+    s o l                              (... success, game over)
+    You made it. You needed 7 tries
+
+
+4.  (Uber) Gör ett program som kan avgöra (med viss sannolikhet) vilket språk en text är
+    skriven på. Exempel körning
+
+    Welcome to LangProc!
+    > k
+    Know languages are:                          (empty)
+    > t
+    Enter language name > french
+    Enter list of files (space separated) > fr1.txt fr2.txt
+    Added french to known languages.
+    > t
+    Enter language name > portuguese
+    Enter list of files (space separated) > port1.txt port2.txt
+    Added portuguese to known languages.
+    ...
+    > k
+    Know languages are:
+    french
+    portuguese
+    spanish
+    > c
+    Enter file to classify > unknown1.txt
+    Closest language is french
+    >
+
+    Utgå från uber/languageprocessor. Läs kommentare
+
+
+4. (Uber) Skriv en egen webserver. Utgå från uber/webserver
+
+
