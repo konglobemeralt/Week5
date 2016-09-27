@@ -80,10 +80,10 @@ public class TicTacToe {
                     } else {
                         actual = p1;
                     }
-                } else {
-                    out.println("The selected position is not empty");
-                    correctPlay = false;
-                }
+                    } else {
+                        out.println("The selected position is not empty");
+                        correctPlay = false;
+                    }
 
             }while(!correctPlay);
 

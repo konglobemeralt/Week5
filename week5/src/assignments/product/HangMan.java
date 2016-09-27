@@ -1,6 +1,8 @@
 package assignments.product;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -40,17 +42,6 @@ public class HangMan {
         WIN,
         LOOSE
     }
-    // Parts of the hanging man (\n is the new line character)
-    private final String[] parts = {
-            "---|\n",
-            "   |\n",
-            "   O\n",
-            "  /",
-            "|",
-            "\\\n",
-            "  /",
-            " \\\n",
-    };
 
     private int nGuess = 0;
     private Result result;
@@ -65,8 +56,41 @@ public class HangMan {
             return;
         }
 
+
+        Secret secret = new Secret(words[rand.nextInt(words.length)]);
         // TODO
         // Create a Man and a Secret
+
+
+
+
+        Man man = new Man();
+
+        while (!man.isDead() && !secret.isSolved()) {
+            Character nextGuess = sc.next().charAt(0);
+            if(secret.isValidQuess(nextGuess)) {
+                if(secret.isCorrectGuess(nextGuess)) {
+                    secret.updateStrings(nextGuess);
+                    System.out.println("You guessed right!");
+                }else {
+                    man.nextStage();
+                    System.out.println("You guessed wrong!");
+                }
+            }else {
+                System.out.println("Please enter a character you have not inserted before.");
+            }
+            man.plot();
+        }
+
+        if(man.isDead()) {
+            man.plot();
+            System.out.println("You lost!");
+        }else {
+            System.out.println("You won!");
+        }
+
+
+
 
         // TODO
         // The logical skeleton here
@@ -87,14 +111,4 @@ public class HangMan {
         out.println();
     }
 
-    private void plotMan(int nParts) {
-        StringBuilder sb = new StringBuilder();
-        int i = 0;
-        while (i < nParts) {
-            sb.append(parts[i]);
-            i++;
-        }
-        out.println(sb.toString());
-
-    }
 }
